@@ -39,10 +39,22 @@ public class MedicineShopController {
 	         return medicineShopService.getAllMedicineShop();
 		}
 		@RequestMapping(value="/update",method= RequestMethod.PUT)
-		public MedicineShop updateMember(@RequestBody MedicineShop medicineShop, int id) {
-			medicineShopService.update(medicineShop,id);
-	         return medicineShopService.getMedicineShopById(id);
-		}
+		public MedicineShop updateMember(@RequestBody MedicineShop medicineShop, @PathVariable int id) {
+			
+
+				MedicineShop newmedicineShop= medicineShop;
+				
+				medicineShop=medicineShopService.getMedicineShopById(id);
+				medicineShop.setMedarea(newmedicineShop.getMedarea());
+				medicineShop.setMedcity(newmedicineShop.getMedcity());
+				medicineShop.setMedshopAddress(newmedicineShop.getMedshopAddress());
+				medicineShop.setMedshopName(newmedicineShop.getMedshopName());
+				medicineShop.setMedshopNumber(newmedicineShop.getMedshopNumber());
+				medicineShopService.saveOrUpdate(medicineShop);
+				return medicineShopService.getMedicineShopById(id);
+				
+		    }
+			
 			
 		@RequestMapping(value="/delete/{id}",method= RequestMethod.DELETE)
 		public List<MedicineShop> deleteById(@PathVariable(value="id") int id) {

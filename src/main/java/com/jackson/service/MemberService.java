@@ -2,13 +2,15 @@ package com.jackson.service;
 
 import java.util.ArrayList;
 import java.util.List; 
-import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import com.jackson.model.Member;
 
 import com.jackson.repo.MemberRepo;
- 
+import org.apache.commons.text.CharacterPredicates;
+import org.apache.commons.text.RandomStringGenerator;
 @Service 
 public class MemberService {
 	@Autowired 	

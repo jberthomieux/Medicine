@@ -24,7 +24,7 @@ public class MemberController {
 @Autowired
 private MemberService memberService;
 
-//private MemberRepo=repo;
+//private Map map = new Map(Member);
 
 //@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(value="/members",method=RequestMethod.GET)
@@ -45,22 +45,19 @@ private MemberService memberService;
 	
 	@RequestMapping(value="/update/{id}",method= RequestMethod.PUT)
 	public Member updateMember(@RequestBody Member member, @PathVariable int id) {
-         //memberService.update(member,id);
-         //return memberService.getMemberById(id);
+
+		Member newmember=member;
 		
-		return memberService.getMemberById(id).map(member->{member.setEmail(member.getEmail());
-		member.setId(member.getId());
-		member.setName(member.getName());
-		member.setPassword(member.getPassword());
-		member.setType(member.getType());
-		member.setUsername(member.getUsername());
-		return memberService.saveMember(member);
-		}).orElseGet(() ->{
-			member.setId(id);
-			return memberService.saveMember(member);
-		});
-	}
-	 
+		member=memberService.getMemberById(id);
+		member.setEmail(newmember.getEmail());
+		member.setName(newmember.getName());
+		member.setPassword(newmember.getPassword());
+		member.setType(newmember.getType());
+		member.setUsername(newmember.getUsername());
+		memberService.saveOrUpdate(member);
+		return memberService.getMemberById(id);
+		
+    }
 		
 	@RequestMapping(value="/delete/{id}",method= RequestMethod.DELETE)
 	public List<Member> deleteById(@PathVariable(value="id") int id) {

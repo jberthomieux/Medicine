@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 
+import org.apache.commons.text.RandomStringGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+
 
 @Entity
 public class Member implements Serializable{
@@ -20,7 +24,8 @@ private String name;
 @Column
 private String username;
 @Column
-private String password;
+@Autowired
+private String password=generateRandomSpecialCharacters(8);
 @Email(message = "Email must be a valid email address")
 private String email;
 @Column 
@@ -72,6 +77,12 @@ public String getType() {
 }
 public void setType(String type) {
 	this.type = type;
+}
+@Bean
+public String generateRandomSpecialCharacters(int length) {
+    RandomStringGenerator pwdGenerator = new RandomStringGenerator.Builder().withinRange(33, 45)
+        .build();
+    return pwdGenerator.generate(length);
 }
 @Override
 public String toString() {
