@@ -1,10 +1,18 @@
 package com.jackson.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import com.jackson.model.Medicine;
 
 
 @Entity
@@ -24,8 +32,15 @@ public class MedicineShop {
     private String medcity;
     @Column
     private String medarea;
+    
+    @OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	@JoinTable(name="MEDICINESHOP_MEDICINE",joinColumns= {
+	@JoinColumn(name="MEDICINESHOP_MEDID")},inverseJoinColumns= {
+	@JoinColumn(name="MEDICINE_ID")})
+    List<Medicine> medicines;
+	
 	public MedicineShop(int medId, String medshopName, String medshopAddress, String medshopNumber, boolean med24h,
-			String medcity, String medarea) {
+			String medcity, String medarea, List<Medicine> medicines) {
 		super();
 		this.medId = medId;
 		this.medshopName = medshopName;
@@ -34,6 +49,13 @@ public class MedicineShop {
 		this.med24h = med24h;
 		this.medcity = medcity;
 		this.medarea = medarea;
+		this.medicines = medicines;
+	}
+	public List<Medicine> getMedicines() {
+		return medicines;
+	}
+	public void setMedicines(List<Medicine> medicines) {
+		this.medicines = medicines;
 	}
 	public MedicineShop() {
 		super();

@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.jackson.model.Medicine;
 import com.jackson.model.MedicineShop;
-import com.jackson.model.Member;
+
 @Repository
-public interface MedicineShopRepo extends JpaRepository <MedicineShop, Integer> {
-	public List<MedicineShop> findByMedshopName(String medshopName);
-}
+public interface MedicineRepo extends JpaRepository <Medicine, Integer>{
+	public List<Medicine> findByName(String name);
+	}

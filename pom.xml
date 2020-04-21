@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jackson</groupId>
-	<artifactId>SbringBootRESTCRUD</artifactId>
+	<artifactId>GoogleMedicine-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SbringBootRESTCRUD</name>
+	<name>GoogleMedicine-1</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -23,14 +23,45 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<dependency>
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+<dependency>
+    <groupId>javax.validation</groupId>
+    <artifactId>validation-api</artifactId>
+    <version>2.0.0.Final</version>
+</dependency>
+		
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.18.12</version>
+				<scope>provided</scope>
+			</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+			<!-- <dependency>
+			    <groupId>javax.mail</groupId>
+			    <artifactId>mail</artifactId>
+			    <version>1.4</version>
+			</dependency> -->
+		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+		<dependency>
+		    <groupId>javax.activation</groupId>
+		    <artifactId>activation</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
 		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -49,10 +80,16 @@
 			    <version>2.9.2</version>
 			</dependency>
 					 <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
-			<dependency>
+			 <dependency>
 			    <groupId>org.apache.commons</groupId>
 			    <artifactId>commons-text</artifactId>
 			    <version>1.8</version>
+			</dependency> 
+					 <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
+			 <dependency>
+			    <groupId>org.apache.commons</groupId>
+			    <artifactId>commons-email</artifactId>
+			    <version>1.5</version>
 			</dependency>
 					 
     		<dependency>

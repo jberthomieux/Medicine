@@ -3,10 +3,9 @@
 //import org.springframework.data.repository.CrudRepository;
 //import org.springframework.stereotype.Repository;
 //
-//import com.jackson.model.Member;
-//
-//
 //@Repository
-//public interface MemberDao extends CrudRepository<Member, Long>{
-//	Member findMemberByName(String name);
-//}
+//public interface MedicineShop extends CrudRepository<MedicineShop, Long>{
+//	
+//		MedicineShop findBloodMedicineShopBybbName(String mebshopName);
+//	}
+//

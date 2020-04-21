@@ -10,7 +10,7 @@ import com.jackson.model.MedicineShop;
 import com.jackson.model.Member;
 import com.jackson.repo.MedicineShopRepo;
 
-@Service
+@Service(value ="medicineShopService")
 public class MedicineShopService {
 	@Autowired 	
 	MedicineShopRepo repo; 	
@@ -35,4 +35,7 @@ public class MedicineShopService {
 	public void update(MedicineShop medicineShop,int id) { 
 		repo.save(medicineShop); 
 		}
+	public List<MedicineShop> getMedicineShopByName(String name) {
+    	return repo.findByMedshopName(name);
+    }
 }

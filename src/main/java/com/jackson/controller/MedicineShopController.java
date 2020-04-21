@@ -23,22 +23,27 @@ public class MedicineShopController {
 	private MedicineShopService medicineShopService;
 
 	//@PreAuthorize("hasRole('ADMIN')")
-		@RequestMapping(value="/members",method=RequestMethod.GET)
+		@RequestMapping(value="/shops",method=RequestMethod.GET)
 		public List<MedicineShop> listMember(){
 			return medicineShopService.getAllMedicineShop();
 		 }
+		@RequestMapping(value="/shopnanme/{name}",method=RequestMethod.GET)
+		public List<MedicineShop> searchMedicineShopByName(@PathVariable(value="name") String name){
+			return medicineShopService.getMedicineShopByName(name);
+		 }
+		
 		//@PreAuthorize("hasRole('USER')")
-		@RequestMapping(value="/member/{id}",method= RequestMethod.GET)
+		@RequestMapping(value="/shopid/{id}",method= RequestMethod.GET)
 		public MedicineShop getOne(@PathVariable(value="id") int id) {
 			return medicineShopService.getMedicineShopById(id);
 			}
-		
+	
 		@RequestMapping(value="/add",method= RequestMethod.POST)
 		public List<MedicineShop> saveMedicineShop(@RequestBody MedicineShop medicineShop) {
 			medicineShopService.saveOrUpdate(medicineShop);
 	         return medicineShopService.getAllMedicineShop();
 		}
-		@RequestMapping(value="/update",method= RequestMethod.PUT)
+		@RequestMapping(value="/update/{id}",method= RequestMethod.PUT)
 		public MedicineShop updateMember(@RequestBody MedicineShop medicineShop, @PathVariable int id) {
 			
 

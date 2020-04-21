@@ -27,7 +27,7 @@ private String username;
 @Autowired
 private String password=generateRandomSpecialCharacters(8);
 @Email(message = "Email must be a valid email address")
-private String email;
+public static String email;
 @Column 
 private String type;
 public Member(int id, String name, String username, String password, String email, String type) {
