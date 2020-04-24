@@ -64,6 +64,7 @@ public class MedicineShopController {
 		@RequestMapping(value="/delete/{id}",method= RequestMethod.DELETE)
 		public List<MedicineShop> deleteById(@PathVariable(value="id") int id) {
 			medicineShopService.delete(id);
+			System.out.println("Delete");
 			return medicineShopService.getAllMedicineShop();
 		}
 

@@ -7,12 +7,16 @@ import org.springframework.stereotype.Service;
 
 import com.jackson.model.BloodBank;
 import com.jackson.model.BloodBankShop;
+
 import com.jackson.repo.BloodBankRepo;
+import com.jackson.repo.BloodBankShopRepo;
 
 @Service 
 public class BloodBankService {
 	@Autowired 	
-	BloodBankRepo repo; 	
+	BloodBankRepo repo; 
+	@Autowired
+	BloodBankShopRepo shoprepo;
 	public List<BloodBank> getAllBloodBanks() { 
 		List<BloodBank> list = new ArrayList<>(); 
 		repo.findAll().forEach(bloodBank -> list.add(bloodBank));
@@ -23,8 +27,10 @@ public class BloodBankService {
 		return repo.findById(id).get(); 
 		}	 	
 	
-	public void saveOrUpdate(BloodBank bloodBank) { 
-		repo.save(bloodBank); 	
+	public void saveOrUpdate(BloodBank bloodBank,int id) { 
+		BloodBankShop blood=shoprepo.findById(id).get();
+		blood.getBloodbanks().add(bloodBank);
+		shoprepo.save(blood);		
 		}	 
 	
 	public void delete(int id) { 

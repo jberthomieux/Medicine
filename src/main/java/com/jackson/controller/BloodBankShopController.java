@@ -2,6 +2,7 @@
 package com.jackson.controller;
 
 import java.util.List;
+//import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jackson.dto.BbSearchResponse;
+import com.jackson.model.BloodBank;
 import com.jackson.model.BloodBankShop;
 import com.jackson.service.BloodBankShopService;
 
@@ -27,11 +30,15 @@ public class BloodBankShopController {
 		public List<BloodBankShop> listMember(){
 			return bloodBankShopService.getAllbloodbank();
 		 }
+		@RequestMapping(value="/result",method=RequestMethod.GET)
+		public List<BbSearchResponse> result(){
+			return bloodBankShopService.searchResult();
+		}
 		@RequestMapping(value="/shopnanme/{name}",method=RequestMethod.GET)
 		public List<BloodBankShop> searchBloodBankShopByName(@PathVariable(value="name") String name){
 			return bloodBankShopService.getBloodBankShopByName(name);
 		 }
-		
+				
 		//@PreAuthorize("hasRole('USER')")
 		@RequestMapping(value="/shop/{id}",method= RequestMethod.GET)
 		public BloodBankShop getOne(@PathVariable(value="id") int id) {

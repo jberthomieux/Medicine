@@ -19,7 +19,7 @@ import com.jackson.service.*;
 
 @CrossOrigin(origins="*",maxAge=3600)
 @RestController
-@RequestMapping("/bloodBank")
+@RequestMapping("/bloodbank")
 public class BloodBankController {
 @Autowired
 private BloodBankService bloodBankService;
@@ -27,7 +27,7 @@ private BloodBankService bloodBankService;
 //private Map map = new Map(Member);
 
 //@PreAuthorize("hasRole('ADMIN')")
-	@RequestMapping(value="/bloodBanks",method=RequestMethod.GET)
+	@RequestMapping(value="/bloodbanks",method=RequestMethod.GET)
 	public List<BloodBank> listMember(){
 		return bloodBankService.getAllBloodBanks();
 	 }
@@ -36,14 +36,14 @@ private BloodBankService bloodBankService;
 		return bloodBankService.getBloodBankByType(type);
 	 }
 	//@PreAuthorize("hasRole('USER')")
-	@RequestMapping(value="/bloodBank/{id}",method= RequestMethod.GET)
+	@RequestMapping(value="/bloodbank/{id}",method= RequestMethod.GET)
 	public BloodBank getOne(@PathVariable(value="id") int id) {
 		return bloodBankService.getBloodBankById(id);
 		}
 	
-	@RequestMapping(value="/add",method= RequestMethod.POST)
-	public List<BloodBank> saveBloodBank(@RequestBody BloodBank bloodBank) {
-		bloodBankService.saveOrUpdate(bloodBank);
+	@RequestMapping(value="/add/{id}",method= RequestMethod.POST)
+	public List<BloodBank> addBloodBank(@RequestBody BloodBank bloodBank,@PathVariable(value="id") int id) {
+		bloodBankService.saveOrUpdate(bloodBank,id);
          return bloodBankService.getAllBloodBanks();
 	}
 	
@@ -57,7 +57,7 @@ private BloodBankService bloodBankService;
 		bloodBank.setType(newbloodBank.getType());
 		bloodBank.setPrice(newbloodBank.getPrice());
 		bloodBank.setQty(newbloodBank.getQty());
-		bloodBankService.saveOrUpdate(bloodBank);
+		bloodBankService.saveOrUpdate(bloodBank,id);
 		return bloodBankService.getBloodBankById(id);
 		
     }

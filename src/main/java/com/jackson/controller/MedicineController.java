@@ -37,9 +37,9 @@ private MedicineService medicineService;
 		return medicineService.getMedicineById(id);
 		}
 	
-	@RequestMapping(value="/add",method= RequestMethod.POST)
-	public List<Medicine> saveMedicine(@RequestBody Medicine medicine) {
-		medicineService.saveOrUpdate(medicine);
+	@RequestMapping(value="/add/{id}",method= RequestMethod.POST)
+	public List<Medicine> addMedicine(@RequestBody Medicine medicine,@PathVariable(value="id") int id) {
+		medicineService.saveOrUpdate(medicine,id);
          return medicineService.getAllMedicines();
 	}
 	@RequestMapping(value="/medicinenanme/{name}",method=RequestMethod.GET)
@@ -57,7 +57,7 @@ private MedicineService medicineService;
 		medicine.setName(newmedicine.getName());
 		medicine.setPrice(newmedicine.getPrice());
 		medicine.setQty(newmedicine.getQty());
-		medicineService.saveOrUpdate(medicine);
+		medicineService.saveOrUpdate(medicine,id);
 		return medicineService.getMedicineById(id);
 		
     }

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 
 import org.apache.commons.text.RandomStringGenerator;
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Bean;
 
 
 @Entity
+@Table(name="user")
 public class Member implements Serializable{
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)

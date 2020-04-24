@@ -12,13 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import com.jackson.model.Medicine;
 
 
-@Entity
+@Entity()
+@Table(name="medicineshop")
 public class MedicineShop {
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int medId;
     @Column
     private String medshopName;
@@ -33,11 +36,14 @@ public class MedicineShop {
     @Column
     private String medarea;
     
-    @OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-	@JoinTable(name="MEDICINESHOP_MEDICINE",joinColumns= {
-	@JoinColumn(name="MEDICINESHOP_MEDID")},inverseJoinColumns= {
-	@JoinColumn(name="MEDICINE_ID")})
-    List<Medicine> medicines;
+//    @OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+//	@JoinTable(name="MEDICINESHOP_MEDICINE",joinColumns= {
+//	@JoinColumn(name="MEDICINESHOP_MEDID")},inverseJoinColumns= {
+//	@JoinColumn(name="MEDICINE_ID")})
+   
+    @OneToMany(targetEntity = Medicine.class, cascade = CascadeType.ALL)
+    @JoinColumn(name="medshop_fk", referencedColumnName = "medId")
+    private List<Medicine> medicines;
 	
 	public MedicineShop(int medId, String medshopName, String medshopAddress, String medshopNumber, boolean med24h,
 			String medcity, String medarea, List<Medicine> medicines) {
@@ -51,7 +57,7 @@ public class MedicineShop {
 		this.medarea = medarea;
 		this.medicines = medicines;
 	}
-	public List<Medicine> getMedicines() {
+  public List<Medicine> getMedicines() {
 		return medicines;
 	}
 	public void setMedicines(List<Medicine> medicines) {

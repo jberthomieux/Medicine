@@ -16,6 +16,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+
 import com.jackson.model.BloodBank;
 
 @Entity
@@ -23,7 +26,7 @@ import com.jackson.model.BloodBank;
 public class BloodBankShop {
 	    @Id
 	    @Column(name = "id")
-		@GeneratedValue(strategy = GenerationType.AUTO )
+		@GeneratedValue(strategy = GenerationType.IDENTITY )
 	    private int bbId;
 	    @Column
 	    private String bbName;
@@ -39,14 +42,21 @@ public class BloodBankShop {
 	    private String bbarea;
 	  
 
-//	    @OneToMany(targetEntity = Employee.class, mappedBy = "id", orphanRemoval = false, fetch = FetchType.LAZY)
-//	    @OneToMany(targetEntity = BloodBank.class, mappedBy = "id", orphanRemoval = false, fetch = FetchType.LAZY)
-        
-	    @OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-		@JoinTable(name="BLOODBANKSHOP_BLOODBANK",joinColumns= {
-		@JoinColumn(name="BLOODBANKSHOP_BBID")},inverseJoinColumns= {
-   	    @JoinColumn(name="BLOODBANK_ID")})
-       private List<BloodBank> bloodbanks;
+     
+//	    @OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+//		@JoinTable(name="BLOODBANKSHOP_BLOODBANK",joinColumns= {
+//		@JoinColumn(name="BLOODBANKSHOP_BBID")},inverseJoinColumns= {
+//   	    @JoinColumn(name="BLOODBANK_ID")})
+	    //@OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+	    @OneToMany(targetEntity = BloodBank.class, cascade = CascadeType.ALL)
+	    @JoinColumn(name="bbshop_fk", referencedColumnName = "id")
+	    private List<BloodBank> bloodbanks;
+
+		
+
+		public BloodBankShop() {
+			super();
+		}
 
 		public BloodBankShop(int bbId, String bbName, String bbAddress, String bbNumber, boolean bb24h, String bbcity,
 				String bbarea, List<BloodBank> bloodbanks) {
@@ -59,10 +69,6 @@ public class BloodBankShop {
 			this.bbcity = bbcity;
 			this.bbarea = bbarea;
 			this.bloodbanks = bloodbanks;
-		}
-
-		public BloodBankShop() {
-			super();
 		}
 
 		public int getBbId() {
@@ -130,6 +136,13 @@ public class BloodBankShop {
 	public void setBloodbanks(List<BloodBank> bloodbanks) {
 			this.bloodbanks = bloodbanks;
 		}
+
+	@Override
+	public String toString() {
+		return "BloodBankShop [bbId=" + bbId + ", bbName=" + bbName + ", bbAddress=" + bbAddress + ", bbNumber="
+				+ bbNumber + ", bb24h=" + bb24h + ", bbcity=" + bbcity + ", bbarea=" + bbarea + ", bloodbanks="
+				+ bloodbanks + "]";
+	}
 		
 	    
 }

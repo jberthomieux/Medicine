@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.jackson.model.MedicineShop;
@@ -25,7 +26,7 @@ public class MedicineShopService {
 		}	 	
 	
 	public void saveOrUpdate(MedicineShop medicineShop) { 
-		repo.save(medicineShop); 	
+			repo.save(medicineShop); 	
 		}	 
 	
 	public void delete(int id) { 
@@ -38,4 +39,19 @@ public class MedicineShopService {
 	public List<MedicineShop> getMedicineShopByName(String name) {
     	return repo.findByMedshopName(name);
     }
+
+	/*
+	 * public Page<Medicine> findCustomersByFirstName(
+	 * 
+	 * @Or({
+	 * 
+	 * @Spec(path = "names.firstName", params = "name", spec = Like.class),
+	 * 
+	 * @Spec(path = "names.lastName", params = "name", spec = Like.class),
+	 * 
+	 * @Spec(path = "names.nickName", params = "name", spec = Like.class) })
+	 * Specification<Customer> customerSpec, Pageable pageable) {
+	 * 
+	 * return customerRepo.findAll(customerSpec, pageable); }
+	 */
 }

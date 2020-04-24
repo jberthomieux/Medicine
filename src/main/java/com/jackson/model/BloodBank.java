@@ -13,34 +13,24 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@Entity(name="BloodBank")
+
+@Entity(name="bloodbank")
 public class BloodBank {
 	@Id
 	@Column(name = "id")
-	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column
 	private String type;
-//	@Column
-//	private String location;
-	@Column
+    @Column
 	private int qty;
 	@Column
 	private double price;
 
-	public BloodBank(int id, String type, String location, int qty, double price) {
-		super();
-		this.id = id;
-		this.type = type;
-		//this.location = location;
-		this.qty = qty;
-		this.price = price;
-	}
-	public BloodBank() {
-		super();
-	}
+	
 	public int getId() {
 		return id;
 	}
