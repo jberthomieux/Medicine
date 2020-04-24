@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jackson.dto.BbSearchResponse;
 import com.jackson.model.*;
 import com.jackson.service.*;
 
@@ -35,6 +36,11 @@ private BloodBankService bloodBankService;
 	public List<BloodBank> searchBloodBankByType(@PathVariable(value="type") String type){
 		return bloodBankService.getBloodBankByType(type);
 	 }
+	@RequestMapping(value="/type/{type}",method=RequestMethod.GET)
+    public List<BbSearchResponse> result(@PathVariable(value="type") String type){
+	return bloodBankService.searchResult(type);
+    }
+	
 	//@PreAuthorize("hasRole('USER')")
 	@RequestMapping(value="/bloodbank/{id}",method= RequestMethod.GET)
 	public BloodBank getOne(@PathVariable(value="id") int id) {

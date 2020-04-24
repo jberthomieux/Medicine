@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jackson.dto.BbSearchResponse;
+import com.jackson.dto.MsSearchResponse;
 import com.jackson.model.*;
 import com.jackson.service.*;
 
@@ -36,6 +38,10 @@ private MedicineService medicineService;
 	public Medicine getOne(@PathVariable(value="id") int id) {
 		return medicineService.getMedicineById(id);
 		}
+	@RequestMapping(value="/name/{name}",method=RequestMethod.GET)
+    public List<MsSearchResponse> result(@PathVariable(value="type") String name){
+	return medicineService.searchResult(name);
+    }
 	
 	@RequestMapping(value="/add/{id}",method= RequestMethod.POST)
 	public List<Medicine> addMedicine(@RequestBody Medicine medicine,@PathVariable(value="id") int id) {

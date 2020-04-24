@@ -15,9 +15,6 @@ public class Medicine {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	//@ManyToOne
-	//@JoinColumn(name="bb_fk", referencedColumnName = "medId")
-	//private int bbid;
 	private int qty;
 	private double price;
 	public int getId() {

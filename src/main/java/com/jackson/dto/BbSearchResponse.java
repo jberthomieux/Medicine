@@ -13,38 +13,21 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 //@Table(name="BloodBank")
 //@Entity
 public class BbSearchResponse {
-
-private int id;
-private double price;
-private int qty;
 private String type;
-//boolean bb24h;
-//private int bbId;
-//private String number;
-//private String name;
-//private String city;
-  //private String bbarea;
-//private String bbAddress;
-//public int getId() {
-//	return id;
-//}
-public int getId() {
-	return id;
-}
-public void setId(int id) {
-	this.id = id;
-}
-public double getPrice() {
-	return price;
-}
-public void setPrice(double price) {
+private double price;
+private String bbarea;
+private String bbAddress;
+private int qty;
+public BbSearchResponse(String type, double price, String bbarea, String bbAddress, int qty) {
+	super();
+	this.type = type;
 	this.price = price;
-}
-public int getQty() {
-	return qty;
-}
-public void setQty(int qty) {
+	this.bbarea = bbarea;
+	this.bbAddress = bbAddress;
 	this.qty = qty;
+}
+public BbSearchResponse() {
+	super();
 }
 public String getType() {
 	return type;
@@ -52,16 +35,29 @@ public String getType() {
 public void setType(String type) {
 	this.type = type;
 }
-//public BbSearchResponse(int id, double price, int qty, String type) {
-//	super();
-//	this.id = id;
-//	this.price = price;
-//	this.qty = qty;
-//	this.type = type;
-//}
-public BbSearchResponse() {
-	super();
+public double getPrice() {
+	return price;
 }
-
+public void setPrice(double price) {
+	this.price = price;
+}
+public String getBbarea() {
+	return bbarea;
+}
+public void setBbarea(String bbarea) {
+	this.bbarea = bbarea;
+}
+public String getBbAddress() {
+	return bbAddress;
+}
+public void setBbAddress(String bbAddress) {
+	this.bbAddress = bbAddress;
+}
+public int getQty() {
+	return qty;
+}
+public void setQty(int qty) {
+	this.qty = qty;
+} 
 
 }

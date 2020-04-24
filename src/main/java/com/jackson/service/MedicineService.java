@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import com.jackson.dto.BbSearchResponse;
+import com.jackson.dto.MsSearchResponse;
 import com.jackson.model.Medicine;
 import com.jackson.model.MedicineShop;
 import com.jackson.model.Member;
@@ -40,7 +42,9 @@ public class MedicineService {
 		med.getMedicines().add(medicine);
 		shoprepo.save(med);	
 		}	 
-	
+	public List<MsSearchResponse> searchResult(String type){
+		return repo.queryResponse(type);
+	}
 	public void delete(int id) { 
 		repo.deleteById(id); 
 		} 	 

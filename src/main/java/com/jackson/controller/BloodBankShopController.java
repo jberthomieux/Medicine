@@ -30,10 +30,7 @@ public class BloodBankShopController {
 		public List<BloodBankShop> listMember(){
 			return bloodBankShopService.getAllbloodbank();
 		 }
-		@RequestMapping(value="/result",method=RequestMethod.GET)
-		public List<BbSearchResponse> result(){
-			return bloodBankShopService.searchResult();
-		}
+		
 		@RequestMapping(value="/shopnanme/{name}",method=RequestMethod.GET)
 		public List<BloodBankShop> searchBloodBankShopByName(@PathVariable(value="name") String name){
 			return bloodBankShopService.getBloodBankShopByName(name);

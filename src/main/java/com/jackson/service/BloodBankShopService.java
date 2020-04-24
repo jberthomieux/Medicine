@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.jackson.dto.BbSearchResponse;
@@ -17,10 +18,9 @@ import com.jackson.repo.BloodBankShopRepo;
 public class BloodBankShopService {
 	@Autowired 	
 	BloodBankShopRepo repo; 	
+	
 	//QueryRepo rep;
-	public List<BbSearchResponse> searchResult(){
-		return repo.queryResponse();
-	}
+		
 	public List<BloodBankShop> getAllbloodbank() { 
 		List<BloodBankShop> list = new ArrayList<>(); 
 		repo.findAll().forEach(bbs -> list.add(bbs));
