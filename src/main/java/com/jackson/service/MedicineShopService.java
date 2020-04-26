@@ -8,7 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.jackson.model.MedicineShop;
-import com.jackson.model.Member;
 import com.jackson.repo.MedicineShopRepo;
 
 @Service(value ="medicineShopService")
@@ -39,19 +38,4 @@ public class MedicineShopService {
 	public List<MedicineShop> getMedicineShopByName(String name) {
     	return repo.findByMedshopName(name);
     }
-
-	/*
-	 * public Page<Medicine> findCustomersByFirstName(
-	 * 
-	 * @Or({
-	 * 
-	 * @Spec(path = "names.firstName", params = "name", spec = Like.class),
-	 * 
-	 * @Spec(path = "names.lastName", params = "name", spec = Like.class),
-	 * 
-	 * @Spec(path = "names.nickName", params = "name", spec = Like.class) })
-	 * Specification<Customer> customerSpec, Pageable pageable) {
-	 * 
-	 * return customerRepo.findAll(customerSpec, pageable); }
-	 */
 }

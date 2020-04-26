@@ -32,13 +32,13 @@ public class Role {
 		return description;
 	}
 	public void setDescription(String description) {
-		this.description = description;
+		this.description = "USER";
 	}
 	public Role(long id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.description = description;
+		this.description = "USER";
 	}
 	public Role() {
 		super();

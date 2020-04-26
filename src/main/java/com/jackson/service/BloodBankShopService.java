@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.jackson.dto.BbSearchResponse;
 import com.jackson.model.BloodBankShop;
 //import com.jackson.model.BloodBank;
-import com.jackson.model.Member;
+import com.jackson.model.User;
 import com.jackson.repo.BloodBankShopRepo;
 
 @Service(value ="bloodBankShopService")

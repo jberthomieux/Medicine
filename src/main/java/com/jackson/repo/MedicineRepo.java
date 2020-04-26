@@ -2,15 +2,12 @@ package com.jackson.repo;
 
 import java.util.List;
 
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.jackson.dto.BbSearchResponse;
 import com.jackson.dto.MsSearchResponse;
 import com.jackson.model.Medicine;
-import com.jackson.model.MedicineShop;
 
 @Repository
 public interface MedicineRepo extends JpaRepository <Medicine, Integer>{

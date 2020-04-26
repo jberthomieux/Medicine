@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jackson.model.MedicineShop;
-import com.jackson.model.Member;
 import com.jackson.service.MedicineShopService;
-import com.jackson.service.MemberService;
 
 @CrossOrigin(origins="*",maxAge=3600)
 @RestController

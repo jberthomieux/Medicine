@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.jackson.model.Mailer;
-import com.jackson.model.Member;
+import com.jackson.model.User;
 
 @SpringBootApplication
 public class GoogleMedicine1Application {

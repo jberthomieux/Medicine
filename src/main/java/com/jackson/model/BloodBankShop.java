@@ -41,13 +41,6 @@ public class BloodBankShop {
 	    @Column
 	    private String bbarea;
 	  
-
-     
-//	    @OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-//		@JoinTable(name="BLOODBANKSHOP_BLOODBANK",joinColumns= {
-//		@JoinColumn(name="BLOODBANKSHOP_BBID")},inverseJoinColumns= {
-//   	    @JoinColumn(name="BLOODBANK_ID")})
-	    //@OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
 	    @OneToMany(targetEntity = BloodBank.class, cascade = CascadeType.ALL)
 	    @JoinColumn(name="bbshop_fk", referencedColumnName = "id")
 	    private List<BloodBank> bloodbanks;

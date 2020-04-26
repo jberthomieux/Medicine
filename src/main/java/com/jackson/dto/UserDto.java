@@ -1,4 +1,4 @@
-package com.jackson.model;
+package com.jackson.dto;
 
 
 public class UserDto {

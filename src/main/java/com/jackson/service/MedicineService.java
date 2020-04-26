@@ -14,7 +14,7 @@ import com.jackson.dto.BbSearchResponse;
 import com.jackson.dto.MsSearchResponse;
 import com.jackson.model.Medicine;
 import com.jackson.model.MedicineShop;
-import com.jackson.model.Member;
+import com.jackson.model.User;
 import com.jackson.repo.MedicineRepo;
 import com.jackson.repo.MedicineShopRepo;
 

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.jackson.dto.BbSearchResponse;
 import com.jackson.model.BloodBank;
-import com.jackson.model.BloodBankShop;
 
 @Repository
 public interface BloodBankRepo extends JpaRepository <BloodBank, Integer>{
